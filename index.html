@@ -1,47 +1,19 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0b1020">
-<meta name="description" content="Mohammed Life System">
-<title>Mohammed Life System</title>
-<link rel="stylesheet" href="style.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#08111f"><meta name="description" content="Mohammed Life System — personal life operating system">
+<link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="style.css"><title>Mohammed Life System</title>
 </head>
 <body>
-<div class="shell">
-  <header class="mobile-head">
-    <button id="menuBtn" class="icon">☰</button>
-    <div><b>Mohammed Life</b><small id="miniDate"></small></div>
-    <button id="quickBtn" class="fab">＋</button>
-  </header>
-
-  <aside class="sidebar">
-    <div class="brand"><div class="logo">M</div><div><strong>Mohammed Life</strong><small>Personal Life OS</small></div></div>
-    <nav id="nav"></nav>
-    <div class="side-bottom">
-      <button id="lang" class="outline">English</button>
-      <button id="export" class="outline">Backup</button>
-      <label class="outline file">Restore<input id="import" type="file" accept="application/json" hidden></label>
-    </div>
-  </aside>
-
-  <main>
-    <header class="desktop-head">
-      <div><small id="date"></small><h1 id="title">اليوم</h1></div>
-      <div class="daybar"><button id="prev">‹</button><button id="jump">اليوم</button><button id="next">›</button></div>
-    </header>
-    <div id="content"></div>
-  </main>
+<div id="app">
+<header class="topbar"><button id="menuBtn" class="icon-btn">☰</button><div class="brand-mini"><span class="brand-mark">M</span><div><b>Mohammed Life</b><small id="topDate"></small></div></div><button id="quickBtn" class="plus-btn">＋</button></header>
+<div class="layout">
+<aside id="sidebar" class="sidebar"><div class="brand"><span class="brand-mark big">M</span><div><b>Mohammed Life</b><small>Personal Life OS</small></div></div><nav id="nav"></nav><div class="side-actions"><button data-action="backup">💾 Backup</button><button data-action="settings">⚙️ Settings</button></div></aside>
+<main class="main"><section id="view"></section></main>
 </div>
-
-<div id="drawer" class="drawer">
-  <div class="drawer-card">
-    <div class="drawer-top"><b id="drawerTitle">إضافة سريعة</b><button id="closeDrawer" class="icon">×</button></div>
-    <div id="drawerBody"></div>
-  </div>
 </div>
-<div id="toast" aria-live="polite"></div>
+<div id="modal" class="modal hidden"><div class="modal-card"><div class="modal-head"><h3 id="modalTitle"></h3><button id="modalClose" class="icon-btn">×</button></div><div id="modalBody"></div></div></div>
+<div id="toast" class="toast"></div>
 <script src="app.js"></script>
-</body>
-</html>
+</body></html>
