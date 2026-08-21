@@ -1,1 +1,11 @@
-{"name":"Mohammed Life System","short_name":"Mohammed Life","start_url":"./","display":"standalone","background_color":"#08111f","theme_color":"#08111f","lang":"ar","dir":"rtl","icons":[]}
+{
+  "name":"Mohammed Life System",
+  "short_name":"Mohammed Life",
+  "start_url":".",
+  "display":"standalone",
+  "background_color":"#f7f8ff",
+  "theme_color":"#6c63ff",
+  "lang":"ar",
+  "dir":"rtl",
+  "icons":[]
+}

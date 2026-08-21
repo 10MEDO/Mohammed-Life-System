@@ -1,19 +1,71 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#08111f"><meta name="description" content="Mohammed Life System — personal life operating system">
-<link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="style.css"><title>Mohammed Life System</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#6c63ff">
+<meta name="description" content="Mohammed Life System — personal life, university, health, habits, finance and planning dashboard">
+<title>Mohammed Life System</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="app">
-<header class="topbar"><button id="menuBtn" class="icon-btn">☰</button><div class="brand-mini"><span class="brand-mark">M</span><div><b>Mohammed Life</b><small id="topDate"></small></div></div><button id="quickBtn" class="plus-btn">＋</button></header>
-<div class="layout">
-<aside id="sidebar" class="sidebar"><div class="brand"><span class="brand-mark big">M</span><div><b>Mohammed Life</b><small>Personal Life OS</small></div></div><nav id="nav"></nav><div class="side-actions"><button data-action="backup">💾 Backup</button><button data-action="settings">⚙️ Settings</button></div></aside>
-<main class="main"><section id="view"></section></main>
+<div class="bg-orb orb-a"></div><div class="bg-orb orb-b"></div><div class="bg-orb orb-c"></div>
+
+<header class="topbar">
+  <button class="icon-btn" id="menuBtn">☰</button>
+  <div class="brand-mini"><span class="brand-mark">M</span><div><b>Mohammed Life</b><small id="topDate"></small></div></div>
+  <button class="icon-btn" id="quickBtn">＋</button>
+</header>
+
+<div class="app-shell">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="brand-mark big">M</div>
+      <div><strong>Mohammed Life</strong><small>Personal Life OS</small></div>
+    </div>
+    <nav id="nav"></nav>
+    <div class="side-actions">
+      <button class="soft-btn" id="themeBtn">🎨 المظهر</button>
+      <button class="soft-btn" id="soundBtn">🔊 الصوت: تشغيل</button>
+      <button class="soft-btn" id="langBtn">EN / العربية</button>
+      <button class="soft-btn" id="exportBtn">⬇️ تصدير البيانات</button>
+      <label class="soft-btn file-btn">⬆️ استيراد البيانات<input id="importInput" type="file" accept="application/json" hidden></label>
+    </div>
+  </aside>
+
+  <main>
+    <section class="page-head">
+      <div>
+        <div class="eyebrow" id="pageEyebrow">نظامك الشخصي</div>
+        <h1 id="pageTitle">لوحة اليوم</h1>
+        <p id="pageSubtitle">كل ما يهمك في مكان واحد.</p>
+      </div>
+      <div class="date-controls">
+        <button class="soft-btn" id="prevDay">‹</button>
+        <button class="soft-btn" id="todayBtn">اليوم</button>
+        <button class="soft-btn" id="nextDay">›</button>
+      </div>
+    </section>
+    <div id="content"></div>
+  </main>
 </div>
+
+<div class="drawer" id="drawer">
+  <div class="drawer-card">
+    <div class="drawer-head"><b>إضافة سريعة</b><button class="icon-btn" id="closeDrawer">×</button></div>
+    <div class="quick-grid">
+      <button class="quick-card" data-quick="task">✅ مهمة جديدة</button>
+      <button class="quick-card" data-quick="event">🗓️ موعد</button>
+      <button class="quick-card" data-quick="expense">💰 مصروف</button>
+      <button class="quick-card" data-quick="habit">🔥 عادة</button>
+      <button class="quick-card" data-quick="study">📚 مذاكرة</button>
+      <button class="quick-card" data-quick="health">🩺 تسجيل صحة</button>
+    </div>
+    <div id="quickForm"></div>
+  </div>
 </div>
-<div id="modal" class="modal hidden"><div class="modal-card"><div class="modal-head"><h3 id="modalTitle"></h3><button id="modalClose" class="icon-btn">×</button></div><div id="modalBody"></div></div></div>
-<div id="toast" class="toast"></div>
+<div id="toast"></div>
 <script src="app.js"></script>
-</body></html>
+</body>
+</html>
