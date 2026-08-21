@@ -1,71 +1,50 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#6c63ff">
-<meta name="description" content="Mohammed Life System — personal life, university, health, habits, finance and planning dashboard">
-<title>Mohammed Life System</title>
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#6c5ce7" />
+  <meta name="description" content="Mohammed Life System — a bilingual personal life, university, health, finance and routine operating system." />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧭</text></svg>">
+  <title>Mohammed Life System</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<div class="bg-orb orb-a"></div><div class="bg-orb orb-b"></div><div class="bg-orb orb-c"></div>
+  <div class="bg-orb orb-a"></div><div class="bg-orb orb-b"></div><div class="bg-orb orb-c"></div>
+  <header class="topbar">
+    <button class="icon-btn" id="menuBtn" aria-label="Menu">☰</button>
+    <div class="brand"><span class="brand-mark">🧭</span><div><strong>Mohammed Life</strong><small>Life OS</small></div></div>
+    <div class="top-actions"><button class="pill-btn" id="langBtn">العربية</button><button class="icon-btn" id="themeBtn" title="Theme">☀️</button><button class="icon-btn" id="quickBtn" title="Quick add">＋</button></div>
+  </header>
 
-<header class="topbar">
-  <button class="icon-btn" id="menuBtn">☰</button>
-  <div class="brand-mini"><span class="brand-mark">M</span><div><b>Mohammed Life</b><small id="topDate"></small></div></div>
-  <button class="icon-btn" id="quickBtn">＋</button>
-</header>
-
-<div class="app-shell">
   <aside class="sidebar" id="sidebar">
-    <div class="brand">
-      <div class="brand-mark big">M</div>
-      <div><strong>Mohammed Life</strong><small>Personal Life OS</small></div>
-    </div>
-    <nav id="nav"></nav>
-    <div class="side-actions">
-      <button class="soft-btn" id="themeBtn">🎨 المظهر</button>
-      <button class="soft-btn" id="soundBtn">🔊 الصوت: تشغيل</button>
-      <button class="soft-btn" id="langBtn">EN / العربية</button>
-      <button class="soft-btn" id="exportBtn">⬇️ تصدير البيانات</button>
-      <label class="soft-btn file-btn">⬆️ استيراد البيانات<input id="importInput" type="file" accept="application/json" hidden></label>
-    </div>
+    <div class="side-profile"><div class="avatar">M</div><div><strong>Mohammed</strong><span id="sideDate"></span></div></div>
+    <nav id="nav">
+      <button class="nav-item active" data-view="home">🏠 <span data-i18n="nav.home">Home</span></button>
+      <button class="nav-item" data-view="lifemap">🗺️ <span>Life Map</span></button>
+      <button class="nav-item" data-view="smartday">🧠 <span>Smart Day</span></button>
+      <button class="nav-item" data-view="insights">💡 <span>Insights</span></button>
+      <button class="nav-item" data-view="planner">🗓️ <span data-i18n="nav.planner">Planner</span></button>
+      <button class="nav-item" data-view="university">🎓 <span data-i18n="nav.university">University</span></button>
+      <button class="nav-item" data-view="health">🫀 <span data-i18n="nav.health">Health</span></button>
+      <button class="nav-item" data-view="habits">🔥 <span data-i18n="nav.habits">Habits</span></button>
+      <button class="nav-item" data-view="hygiene">🧼 <span data-i18n="nav.hygiene">Hygiene</span></button>
+      <button class="nav-item" data-view="finance">💰 <span data-i18n="nav.finance">Finance</span></button>
+      <button class="nav-item" data-view="focus">⏱️ <span data-i18n="nav.focus">Focus</span></button>
+      <button class="nav-item" data-view="journal">📖 <span data-i18n="nav.journal">Journal</span></button>
+      <button class="nav-item" data-view="analytics">📊 <span data-i18n="nav.analytics">Analytics</span></button>
+      <button class="nav-item" data-view="music">🎵 <span>Music & Quran</span></button>
+      <button class="nav-item" data-view="settings">⚙️ <span data-i18n="nav.settings">Settings</span></button>
+    </nav>
+    <div class="side-footer"><span>Offline-first</span><span class="dot"></span><span>Private</span></div>
   </aside>
 
-  <main>
-    <section class="page-head">
-      <div>
-        <div class="eyebrow" id="pageEyebrow">نظامك الشخصي</div>
-        <h1 id="pageTitle">لوحة اليوم</h1>
-        <p id="pageSubtitle">كل ما يهمك في مكان واحد.</p>
-      </div>
-      <div class="date-controls">
-        <button class="soft-btn" id="prevDay">‹</button>
-        <button class="soft-btn" id="todayBtn">اليوم</button>
-        <button class="soft-btn" id="nextDay">›</button>
-      </div>
-    </section>
-    <div id="content"></div>
-  </main>
-</div>
+  <main id="app" class="app"></main>
 
-<div class="drawer" id="drawer">
-  <div class="drawer-card">
-    <div class="drawer-head"><b>إضافة سريعة</b><button class="icon-btn" id="closeDrawer">×</button></div>
-    <div class="quick-grid">
-      <button class="quick-card" data-quick="task">✅ مهمة جديدة</button>
-      <button class="quick-card" data-quick="event">🗓️ موعد</button>
-      <button class="quick-card" data-quick="expense">💰 مصروف</button>
-      <button class="quick-card" data-quick="habit">🔥 عادة</button>
-      <button class="quick-card" data-quick="study">📚 مذاكرة</button>
-      <button class="quick-card" data-quick="health">🩺 تسجيل صحة</button>
-    </div>
-    <div id="quickForm"></div>
-  </div>
-</div>
-<div id="toast"></div>
-<script src="app.js"></script>
+  <div class="modal hidden" id="modal"><div class="modal-card"><div class="modal-head"><h3 id="modalTitle">Quick Add</h3><button class="icon-btn" id="closeModal">×</button></div><div id="modalBody"></div></div></div>
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+<script src="google-calendar.js"></script>
 </body>
 </html>
